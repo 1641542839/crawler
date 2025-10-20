@@ -36,9 +36,12 @@ crawler/
 ├── index.html      # Main HTML file with registration form
 ├── styles.css      # Styling for the registration form
 ├── script.js       # Form validation and submission logic
-├── data/           # Directory for data storage
 └── README.md       # This file
 ```
+
+## Data Storage
+
+User registration data is stored in the browser's localStorage for demonstration purposes. In a production environment, this should be replaced with a proper backend API and database.
 
 ## Validation Rules
 

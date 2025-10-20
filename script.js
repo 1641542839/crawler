@@ -134,29 +134,46 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Check if all validations passed
         if (isUsernameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid) {
-            // Prepare user data
-            const userData = {
-                username: username.value.trim(),
-                email: email.value.trim(),
-                fullName: document.getElementById('fullName').value.trim(),
-                timestamp: new Date().toISOString()
-            };
+            try {
+                // Prepare user data
+                const fullNameElement = document.getElementById('fullName');
+                const userData = {
+                    username: username.value.trim(),
+                    email: email.value.trim(),
+                    fullName: fullNameElement ? fullNameElement.value.trim() : '',
+                    timestamp: new Date().toISOString()
+                };
 
-            // Save to localStorage (simulating backend storage)
-            const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-            users.push(userData);
-            localStorage.setItem('registeredUsers', JSON.stringify(users));
+                // Save to localStorage (simulating backend storage)
+                let users = [];
+                try {
+                    const storedUsers = localStorage.getItem('registeredUsers');
+                    users = storedUsers ? JSON.parse(storedUsers) : [];
+                    if (!Array.isArray(users)) {
+                        users = [];
+                    }
+                } catch (e) {
+                    console.error('Error parsing stored users:', e);
+                    users = [];
+                }
+                
+                users.push(userData);
+                localStorage.setItem('registeredUsers', JSON.stringify(users));
 
-            // Show success message
-            form.style.display = 'none';
-            successMessage.style.display = 'block';
+                // Show success message
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
 
-            // Reset form after 3 seconds and show it again
-            setTimeout(function() {
-                form.reset();
-                form.style.display = 'flex';
-                successMessage.style.display = 'none';
-            }, 3000);
+                // Reset form after 3 seconds and show it again
+                setTimeout(function() {
+                    form.reset();
+                    form.style.display = 'flex';
+                    successMessage.style.display = 'none';
+                }, 3000);
+            } catch (error) {
+                console.error('Error saving user data:', error);
+                alert('An error occurred while saving your registration. Please try again.');
+            }
         }
     });
 });
