@@ -118,6 +118,21 @@ body {
     font-weight: 600;
 }
 
+.error-notification {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.error-notification p {
+    margin: 0;
+    font-weight: 600;
+}
+
 @media (max-width: 600px) {
     .registration-box {
         padding: 30px 20px;

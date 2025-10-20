@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('registrationForm');
     const successMessage = document.getElementById('success-message');
+    const errorNotification = document.getElementById('error-message');
 
     // Form field elements
     const username = document.getElementById('username');
@@ -172,7 +173,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 3000);
             } catch (error) {
                 console.error('Error saving user data:', error);
-                alert('An error occurred while saving your registration. Please try again.');
+                errorNotification.style.display = 'block';
+                
+                // Hide error message after 5 seconds
+                setTimeout(function() {
+                    errorNotification.style.display = 'none';
+                }, 5000);
             }
         }
     });
