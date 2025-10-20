@@ -1,0 +1,9 @@
+# Web Crawler Seeds File
+# One URL per line
+# Lines starting with # are comments and will be ignored
+
+# Example seeds (commented out by default):
+# https://example.com/
+# https://www.python.org/doc/
+# https://docs.python.org/3/
+
