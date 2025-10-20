@@ -1,0 +1,14 @@
+requests
+beautifulsoup4
+markdownify
+pdfplumber
+camelot-py[cv]
+python-docx
+pytesseract
+pandas
+sentence-transformers
+faiss-cpu
+fastapi
+uvicorn[standard]
+python-dotenv
+tqdm
